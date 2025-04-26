@@ -27,6 +27,7 @@ h1 {
 .card {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  text-align: justify;
 }
 
 .left {
