@@ -5,11 +5,13 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
     var buttonInnerHTML = this.innerHTML;
 
     makeSound(buttonInnerHTML);
+    buttonAnimation(buttonInnerHTML);
   });
 }
 
 document.addEventListener("keydown", function (event) {
   makeSound(event.key);
+  buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -39,7 +41,7 @@ function makeSound(key) {
       audio.play();
       break;
     case "l":
-      var audio = new Audio("sounds/kick-bass.mp3");
+      var audio = new Audio("sounds/kick.mp3");
       audio.play();
       break;
     default:
@@ -48,12 +50,14 @@ function makeSound(key) {
   }
 }
 
-// Detecting Button Press
-// for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
-//   document.querySelectorAll(".drum")[i].addEventListener("click", function () {
-//     alert("I got clicked!");
-//   });
-// }
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+
+  setTimeout(function () {
+    activeButton.classList.remove("pressed");
+  }, 100);
+}
 
 // document.querySelector("button").addEventListener("click", handleCLick);
 
